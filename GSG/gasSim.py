@@ -34,23 +34,24 @@ class GasNetworkCompressor:
     def __init__(self, edge, alpha, r):
         self.edge  = edge.copy()
         self.alpha = alpha
-        self.r     = r
-    # copy
-    def copy(self):
-        import copy
-        return copy.deepcopy(self)
-    
+        self.r     = r    
 
 class GasNetworkModel:
     # @in nodes: the list of node flows,
     # @in edges: the list of the edges, the element is a edge class.
     # @in cps: the list of the compressor, the element is the compressor class
-    def __init__(self, nodes, edges, cps):
+    # @in name: the name of the gas network model
+    def __init__(self, nodes, edges, cps, name):
         self.nodes = nodes.copy()
         self.edges = edges.copy()
         self.compressor = cps.copy()
+    # @in filename, a local file that we can read the network into the ram
+    # we don't check whether this file is actually exist. We let the program 
+    # crash.
+    def __init__(self, filename):
+        file = open(filename,'r')
         
-
+        
 def Gas_Network_Simulation():
     print('Hellow')
     

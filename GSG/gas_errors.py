@@ -8,7 +8,8 @@ The Error happen in the gas network
 
 class EdgeStartEndSameError(Exception):
     def __init__(self,edge):
-        print('Error in '+self.__str__()+' The edge start and end should not be the same')
+        print('Gas Simulation Error in '+self.__str__()+' \
+              The edge start and end should not be the same')
         
 
 
