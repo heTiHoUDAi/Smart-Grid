@@ -36,6 +36,14 @@ class GasNetworkCompressor:
         self.alpha = alpha
         self.r     = r    
 
+class GetNetworkNode:
+    # @in number: the number or label of the gas network node
+    # @in damend: the gas damend of this node, positive for comuser, nagetive for
+    #               supplier.
+    def __init__(self, number, demand):
+        self.number = number
+        self.demand = demand
+
 class GasNetworkModel:
     # @in nodes: the list of node flows,
     # @in edges: the list of the edges, the element is a edge class.
@@ -48,8 +56,23 @@ class GasNetworkModel:
     # @in filename, a local file that we can read the network into the ram
     # we don't check whether this file is actually exist. We let the program 
     # crash.
+    # The input file of the Gas Network is as follow,
+    # Gas Network Description
+    # [node]
+    # Number[comma]Demand[\r\n] -- int,float
+    # [edge]
+    # Number[comma]Start[comma]End[comma]GasConstant[\r\n] -- int,int,int,float
+    # [compressor]
+    # Number[comma]EdgeNumber[comma]Alpha[comma]R[\r\n] -- int,int,float,float.
+    # End of Gas Network Description
+    # !!! - I don't check whether the number in the file is illegal.
     def __init__(self, filename):
+        self.edges = []
+        self.nodes = []
+        self.compressor = []
+        import csv
         file = open(filename,'r')
+        
         
         
 def Gas_Network_Simulation():
